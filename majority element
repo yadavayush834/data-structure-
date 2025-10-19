@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& arr) {
+        int candidate = 0;
+        int count = 0;
+        
+     
+        for (int num : arr) {
+            if (count == 0) {
+                candidate = num;
+            }
+            count += (num == candidate) ? 1 : -1;
+        }
+        
+    
+        int freq = 0;
+        for (int num : arr) {
+            if (num == candidate) {
+                freq++;
+            }
+        }
+        
+       
+        if (freq > arr.size() / 2) {  
+            return candidate;
+        } else {
+            return -1;
+        }
+    }
+};
