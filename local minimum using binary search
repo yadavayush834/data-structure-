@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int findLocalMinUtil(const vector<int> &arr, int low, int high, int n) {
+    int mid = low + (high - low) / 2;
+
+    // Check if mid is a local minimum
+    if ((mid == 0 || arr[mid - 1] > arr[mid]) &&
+        (mid == n - 1 || arr[mid + 1] > arr[mid]))
+        return mid;
+
+    // If left neighbor is smaller, move left
+    else if (mid > 0 && arr[mid - 1] < arr[mid])
+        return findLocalMinUtil(arr, low, mid - 1, n);
+
+    // Else move right
+    return findLocalMinUtil(arr, mid + 1, high, n);
+}
+
+int findLocalMin(const vector<int> &arr) {
+    int n = arr.size();
+    return findLocalMinUtil(arr, 0, n - 1, n);
+}
+
+int main() {
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++) cin >> arr[i];
+
+    int localMinIndex = findLocalMin(arr);
+    cout << "Local minimum is " << arr[localMinIndex]
+         << " at index " << localMinIndex << endl;
+
+    return 0;
+}
