@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// int main() {
+// 	// your code goes here
+// 	vector<int>arr = {7,-8900,1,0,3,-25};
+// 	int sum = INT_MIN;
+// 	for(int i = 0 ; i< arr.size(); i++){
+// 	  int maxi = 0 ;
+// 	  for(int j = i ; j < arr.size() ; j++){
+// 	    maxi += arr[j];
+// 	    sum = max(maxi, sum);
+// 	  }
+// 	}
+// 	cout<<sum ; 
+
+// }
+
+
+//kadane's algorithm
+int main(){
+  vector<int>arr = {7,-8900,1,56,78,-90,4};
+  int maxi = arr[0];
+  int res = arr[0];
+  for(int i = 1 ; i< arr.size(); i++){
+    maxi = max(arr[i],arr[i]+maxi);
+    res = max(maxi,res);
+  }
+} 
