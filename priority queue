@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	priority_queue<int>pq ; 
+	pq.push(20);
+	pq.push(3);
+	pq.push(4);
+	pq.pop();
+	while(!pq.empty()){
+	  cout<<pq.top()<<" ";
+	  pq.pop();
+	}
+	return 0 ;
+
+}
